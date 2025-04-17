@@ -3,7 +3,7 @@
       "title": "Hello world!",
       "about": "Go to the about page"
     },
-    "SideMenu": {
+    "Navigation": {
       "Menu": "Menu",
       "Home": "Home",
       "Store": "Store",

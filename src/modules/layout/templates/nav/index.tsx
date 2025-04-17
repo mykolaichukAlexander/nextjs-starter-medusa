@@ -5,9 +5,11 @@ import { StoreRegion } from "@medusajs/types"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import CartButton from "@modules/layout/components/cart-button"
 import SideMenu from "@modules/layout/components/side-menu"
+import { getTranslations } from "next-intl/server"
 
 export default async function Nav() {
   const regions = await listRegions().then((regions: StoreRegion[]) => regions)
+  const t = await getTranslations('Navigation')
 
   return (
     <div className="sticky top-0 inset-x-0 z-50 group">
@@ -36,7 +38,7 @@ export default async function Nav() {
                 href="/account"
                 data-testid="nav-account-link"
               >
-                Account
+                {t('Account')}
               </LocalizedClientLink>
             </div>
             <Suspense
@@ -46,7 +48,7 @@ export default async function Nav() {
                   href="/cart"
                   data-testid="nav-cart-link"
                 >
-                  Cart (0)
+                  {t('Cart')}
                 </LocalizedClientLink>
               }
             >

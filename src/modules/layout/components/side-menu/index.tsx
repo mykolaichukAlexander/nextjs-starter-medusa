@@ -19,7 +19,7 @@ const SideMenuItems = {
 
 const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
   const toggleState = useToggleState()
-  const t = useTranslations('SideMenu')
+  const t = useTranslations('Navigation')
 
   return (
     <div className="h-full">
@@ -92,8 +92,7 @@ const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
                         />
                       </div>
                       <Text className="flex justify-between txt-compact-small">
-                        © {new Date().getFullYear()} Medusa Store. All rights
-                        reserved.
+                        © {new Date().getFullYear()} The Wool
                       </Text>
                     </div>
                   </div>
