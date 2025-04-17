@@ -2,5 +2,12 @@
     "Home": {
       "title": "Hello world!",
       "about": "Go to the about page"
+    },
+    "SideMenu": {
+      "Menu": "Menu",
+      "Home": "Home",
+      "Store": "Store",
+      "Account": "Account",
+      "Cart": "Cart"
     }
   }

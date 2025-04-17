@@ -8,6 +8,7 @@ import { Fragment } from "react"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import CountrySelect from "../country-select"
 import { HttpTypes } from "@medusajs/types"
+import { useTranslations } from "next-intl"
 
 const SideMenuItems = {
   Home: "/",
@@ -18,6 +19,7 @@ const SideMenuItems = {
 
 const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
   const toggleState = useToggleState()
+  const t = useTranslations('SideMenu')
 
   return (
     <div className="h-full">
@@ -30,7 +32,7 @@ const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
                   data-testid="nav-menu-button"
                   className="relative h-full flex items-center transition-all ease-out duration-200 focus:outline-none hover:text-ui-fg-base"
                 >
-                  Menu
+                  {t('Menu')}
                 </Popover.Button>
               </div>
 
@@ -64,7 +66,7 @@ const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
                               onClick={close}
                               data-testid={`${name.toLowerCase()}-link`}
                             >
-                              {name}
+                              {t(name)}
                             </LocalizedClientLink>
                           </li>
                         )
