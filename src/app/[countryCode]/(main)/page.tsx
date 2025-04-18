@@ -5,6 +5,7 @@ import { listCollections } from "@lib/data/collections"
 import { getRegion } from "@lib/data/regions"
 import { getTranslations } from "next-intl/server"
 import { BannerCarousel } from "@modules/home/components/bunner"
+import { HoverBannerCarousel } from "@modules/home/components/hower-bunner"
 
 export const metadata: Metadata = {
   title: "Medusa Next.js Starter Template",
@@ -32,7 +33,7 @@ export default async function Home(props: {
   return (
     <>
       <section className="container mx-auto px-4 py-8">
-        <BannerCarousel className="mb-12" />
+        <HoverBannerCarousel className="mb-12" />
 
         {/* Rest of your homepage content */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
