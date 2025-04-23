@@ -4,7 +4,8 @@ import { StoreCollection } from "@medusajs/types"
 
 interface CategoryPreviewProps {
   collection: StoreCollection
-  isFeatured?: boolean
+  isFeatured?: boolean,
+  title?: string
 }
 
 const CategoryPreview = ({ collection, isFeatured = false }: CategoryPreviewProps) => {
@@ -44,9 +45,10 @@ const CategoryPreview = ({ collection, isFeatured = false }: CategoryPreviewProp
 interface CategoriesGridProps {
   collections: StoreCollection[]
   title?: string
+  subTitle?: string
 }
 
-export const CategoriesGrid = ({ collections, title = "Shop by Category" }: CategoriesGridProps) => {
+export const CategoriesGrid = ({ collections, title = "Shop by Category" , subTitle = "Browse our collections and find what you're looking for"}: CategoriesGridProps) => {
   if (!collections || collections.length === 0) {
     return null
   }
@@ -56,7 +58,7 @@ export const CategoriesGrid = ({ collections, title = "Shop by Category" }: Cate
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center text-center mb-8">
           <h2 className="text-3xl font-bold mb-4">{title}</h2>
-          <p className="text-gray-600 max-w-lg">Browse our collections and find what you're looking for</p>
+          <p className="text-gray-600 max-w-lg">{subTitle}</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

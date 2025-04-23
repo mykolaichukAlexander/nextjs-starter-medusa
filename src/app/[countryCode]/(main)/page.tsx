@@ -43,13 +43,10 @@ export default async function Home(props: {
 
   return (
     <>
-      <section className="container mx-auto px-4 py-8">
-        <HoverBannerCarousel className="mb-12" />
-        <ShopButton text={t("shop_button")} link={"/store"} />
-      </section>
-      <EnhancedTabbedShowcase products={products} region={region} />
-      <FloatingShopButton />
-      <CategoriesGrid collections={collections} />
+      <HoverBannerCarousel className="mb-4" />
+      <EnhancedTabbedShowcase products={products} region={region} title={t("discover")} />
+      <FloatingShopButton title={t("shop_button")} />
+      <CategoriesGrid collections={collections} title={t("shop_by_category")} subTitle={t("shop_by_category_sub")} />
     </>
   )
 }

@@ -2,7 +2,12 @@
     "Home": {
       "title": "Hello world!",
       "about": "Go to the about page",
-      "shop_button": "Shop All Products"
+      "shop_button": "Shop All Products",
+      "featured": "Featured",
+      "latest": "Latest",
+      "discover": "Discover Our Products",
+      "shop_by_category": "Shop by Collection",
+      "shop_by_category_sub": "Browse our collections and find what you're looking for"
     },
     "Navigation": {
       "Menu": "Menu",

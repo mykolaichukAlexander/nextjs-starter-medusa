@@ -8,8 +8,8 @@ export const metadata: Metadata = {
 }
 
 export default async function RootLayout(props: {params: {countryCode: string} ,children: React.ReactNode }) {
-  const {countryCode} = props.params
-  console.log(countryCode)
+  const {countryCode} = await props.params
+  // console.log(countryCode)
   return (
     <html lang={countryCode} data-mode="light">
       <body>

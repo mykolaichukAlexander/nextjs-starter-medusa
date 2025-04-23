@@ -8,6 +8,7 @@ import Image from "next/image"
 import { cn } from "@lib/util/cn"
 import PreviewPrice from "@modules/products/components/product-preview/price"
 import { getProductPrice } from "@lib/util/get-product-price"
+import { useTranslations } from "next-intl"
 
 // Simple product preview component
 const SimpleProductPreview = ({ product }: { product: StoreProduct }) => {
@@ -60,18 +61,19 @@ export const EnhancedTabbedShowcase = ({
   showViewAll = true,
   region,
 }: EnhancedTabbedShowcaseProps) => {
-    const initDefaultTabs = (products: StoreProduct[]): TabData[] => {
+  const t = useTranslations('Home')
+  const initDefaultTabs = (products: StoreProduct[]): TabData[] => {
         const tabs: TabData[] = [];
-        console.log(products);
+        // console.log(products);
     
         tabs.push({
             id: "1",
-            label: "Featured",
+            label: t("featured"),
             products: products.filter((product) => product.metadata?.featured).slice(0, 4),
         })
         tabs.push({
             id: "2",
-            label: "Latest",
+            label: t("latest"),
             products: products.sort((a, b) => new Date(b.created_at || "").getTime() - new Date(a.created_at || "").getTime()).slice(0, 4),
         })
         
@@ -112,8 +114,8 @@ export const EnhancedTabbedShowcase = ({
   const activeTabData = finalTabs.find((tab) => tab.id === activeTab)
 
   return (
-    <div className="py-12">
-      <div className="container mx-auto px-4">
+    <div className="py-4">
+      <div className="container mx-auto px-2">
         <div className="flex flex-col items-center text-center mb-8">
           <h2 className="text-3xl font-bold mb-4">{title}</h2>
         </div>
@@ -127,7 +129,7 @@ export const EnhancedTabbedShowcase = ({
                 onClick={() => handleTabChange(tab.id)}
                 className={cn(
                   "px-6 py-2 bg-gray-50 text-sm font-medium rounded-full transition-all whitespace-nowrap",
-                  activeTab === tab.id ? "bg-gray-600 text-white shadow-sm" // Changed from bg-primary to bg-blue-600
+                  activeTab === tab.id ? "bg-slate-700 text-white shadow-sm"
                   : "text-gray-600 hover:text-gray-800 bg-transparent",
                 )}
                 aria-selected={activeTab === tab.id}

@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { ShoppingBag } from "lucide-react"
 
-export const FloatingShopButton = () => {
+export const FloatingShopButton = ({ title }: { title: string }) => {
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
@@ -26,11 +26,11 @@ export const FloatingShopButton = () => {
   return (
     <Link
       href="/store"
-      className="fixed bottom-6 right-6 bg-secondary text-white p-4 rounded-full shadow-lg hover:bg-primary/90 transition-all z-50 flex items-center gap-2"
+      className="fixed bottom-6 right-6 bg-slate-700 text-white p-4 rounded-full shadow-lg hover:bg-slate-600 transition-all z-50 flex items-center gap-2"
       aria-label="Shop all products"
     >
       <ShoppingBag className="w-5 h-5" />
-      <span className="font-medium">Shop Now</span>
+      <span className="font-medium">{title}</span>
     </Link>
   )
 }
