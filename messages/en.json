@@ -1,7 +1,8 @@
 {
     "Home": {
       "title": "Hello world!",
-      "about": "Go to the about page"
+      "about": "Go to the about page",
+      "shop_button": "Shop All Products"
     },
     "Navigation": {
       "Menu": "Menu",

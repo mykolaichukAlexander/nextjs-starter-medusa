@@ -5293,7 +5293,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"clsx@npm:^2.0.0":
+"clsx@npm:^2.0.0, clsx@npm:^2.1.1":
   version: 2.1.1
   resolution: "clsx@npm:2.1.1"
   checksum: acd3e1ab9d8a433ecb3cc2f6a05ab95fe50b4a3cfc5ba47abb6cbf3754585fcb87b84e90c822a1f256c4198e3b41c7f6c391577ffc8678ad587fc0976b24fd57
@@ -5586,34 +5586,6 @@ __metadata:
   version: 1.5.137
   resolution: "electron-to-chromium@npm:1.5.137"
   checksum: 000803b46f87a52fda756ffcb92b7e8baa1ccd5c2545fde46f35b8f10f9d7e1d0d8681532f8ef2e9ee2e0367c63772554f04966abd8576b3403204fdf684a2b5
-  languageName: node
-  linkType: hard
-
-"embla-carousel-react@npm:^8.6.0":
-  version: 8.6.0
-  resolution: "embla-carousel-react@npm:8.6.0"
-  dependencies:
-    embla-carousel: 8.6.0
-    embla-carousel-reactive-utils: 8.6.0
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.1 || ^18.0.0 || ^19.0.0 || ^19.0.0-rc
-  checksum: 30622c3f6bc3de5b608ab3fd82f69ec2ad86e86657c4c9d780380cf159bf5dac0170adced74aecd117c521c06fa014fe71b5fa0ec7c293921fd1cb7dff460be3
-  languageName: node
-  linkType: hard
-
-"embla-carousel-reactive-utils@npm:8.6.0":
-  version: 8.6.0
-  resolution: "embla-carousel-reactive-utils@npm:8.6.0"
-  peerDependencies:
-    embla-carousel: 8.6.0
-  checksum: d3663addcb10a5cfecac976987f27fd58f2142ef944da9cd56568120752a71cb04d731e9c396f2e426f43be730f02145a87b88747c6902e24544a6fca9fc0141
-  languageName: node
-  linkType: hard
-
-"embla-carousel@npm:8.6.0":
-  version: 8.6.0
-  resolution: "embla-carousel@npm:8.6.0"
-  checksum: d943d225d069a8cf0b876440297dda42107e5e69006387c6bce1163b027ac5e5beba67160db818a763c7c46f2103238a097953ac3f383362f8104535cd278de1
   languageName: node
   linkType: hard
 
@@ -7328,7 +7300,7 @@ __metadata:
     ansi-colors: ^4.1.3
     autoprefixer: ^10.4.2
     babel-loader: ^8.2.3
-    embla-carousel-react: ^8.6.0
+    clsx: ^2.1.1
     eslint: 8.10.0
     eslint-config-next: 15.0.3
     lodash: ^4.17.21
@@ -7343,6 +7315,7 @@ __metadata:
     react-country-flag: ^3.1.0
     react-dom: 19.0.0-rc-66855b96-20241106
     server-only: ^0.0.1
+    tailwind-merge: ^3.2.0
     tailwindcss: ^3.0.23
     tailwindcss-radix: ^2.8.0
     typescript: ^5.3.2
@@ -9326,6 +9299,13 @@ __metadata:
   version: 2.6.0
   resolution: "tailwind-merge@npm:2.6.0"
   checksum: 18976c4096920bc6125f1dc837479805de996d86bcc636f98436f65c297003bde89ffe51dfd325b7c97fc71b1dbba8505459dd96010e7b181badd29aea996440
+  languageName: node
+  linkType: hard
+
+"tailwind-merge@npm:^3.2.0":
+  version: 3.2.0
+  resolution: "tailwind-merge@npm:3.2.0"
+  checksum: 942e86ef6fffd9b9bdb6ab41626ef013ebebca001e1b7c183a2c426ea7169a915d47485c2c4d73a91f4ff390df99645c262e47b8f0be8a7e18837b512f196068
   languageName: node
   linkType: hard
 
