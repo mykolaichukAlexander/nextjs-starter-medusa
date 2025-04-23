@@ -13,10 +13,12 @@ export const metadata: Metadata = {
   metadataBase: new URL(getBaseURL()),
 }
 
-export default async function PageLayout(props: { children: React.ReactNode }) {
+export default async function PageLayout(props: { children: React.ReactNode, params: { countryCode: string } }) {
   const customer = await retrieveCustomer()
   const cart = await retrieveCart()
   let shippingOptions: StoreCartShippingOption[] = []
+
+  const {countryCode} = await props.params
 
   if (cart) {
     const { shipping_options } = await listCartOptions()
@@ -39,7 +41,7 @@ export default async function PageLayout(props: { children: React.ReactNode }) {
         />
       )}
       {props.children}
-      <Footer />
+      <Footer countryCode={countryCode} />
     </>
   )
 }
