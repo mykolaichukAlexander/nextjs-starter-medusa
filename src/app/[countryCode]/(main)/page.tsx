@@ -44,7 +44,7 @@ export default async function Home(props: {
   return (
     <>
       <HoverBannerCarousel className="mb-4" />
-      <EnhancedTabbedShowcase products={products} region={region} title={t("discover")} />
+      <EnhancedTabbedShowcase products={products} countryCode={countryCode} title={t("discover")} />
       <FloatingShopButton title={t("shop_button")} />
       <CategoriesGrid collections={collections} title={t("shop_by_category")} subTitle={t("shop_by_category_sub")} />
     </>

@@ -9,29 +9,34 @@ import { cn } from "@lib/util/cn"
 import PreviewPrice from "@modules/products/components/product-preview/price"
 import { getProductPrice } from "@lib/util/get-product-price"
 import { useTranslations } from "next-intl"
+import { getTranslationFromMetadata } from "@lib/util/translations"
+import { capitalizeFirstLetterOfEachWord } from "@lib/util/string"
 
 // Simple product preview component
-const SimpleProductPreview = ({ product }: { product: StoreProduct }) => {
+const SimpleProductPreview = ({ product, countryCode }: { product: StoreProduct, countryCode: string }) => {
     
   
     // Get thumbnail URL
     const thumbnailUrl = product.thumbnail || "/placeholder.svg?height=200&width=200"
 
+
+    const title = capitalizeFirstLetterOfEachWord(getTranslationFromMetadata(product.metadata as Record<string, any>, "title", countryCode) || product.title)
+
     const { cheapestPrice } = getProductPrice({
         product,
-      })
+    })
   
     return (
       <Link href={`/products/${product.handle}`} className="group">
         <div className="relative aspect-square mb-2 overflow-hidden rounded-md bg-gray-100">
           <Image
             src={thumbnailUrl}
-            alt={product.title || "Product image"}
+            alt={title || "Product image"}
             fill
             className="object-cover transition-transform group-hover:scale-115"
           />
         </div>
-        <h3 className="text-base font-medium">{product.title}</h3>
+        <h3 className="text-base font-medium">{title}</h3>
         {cheapestPrice && <PreviewPrice price={cheapestPrice} />}
       </Link>
     )
@@ -50,7 +55,7 @@ interface EnhancedTabbedShowcaseProps {
   title?: string
   itemsPerRow?: 3 | 4
   showViewAll?: boolean
-  region: StoreRegion
+  countryCode: string
 }
 
 export const EnhancedTabbedShowcase = ({
@@ -59,7 +64,7 @@ export const EnhancedTabbedShowcase = ({
   title = "Discover Our Products",
   itemsPerRow = 4,
   showViewAll = true,
-  region,
+  countryCode,
 }: EnhancedTabbedShowcaseProps) => {
   const t = useTranslations('Home')
   const initDefaultTabs = (products: StoreProduct[]): TabData[] => {
@@ -153,7 +158,7 @@ export const EnhancedTabbedShowcase = ({
           >
             {displayedProducts.map((product) => (
               <li key={product.id}>
-                <SimpleProductPreview product={product} />
+                <SimpleProductPreview product={product} countryCode={countryCode} />
               </li>
             ))}
           </ul>
