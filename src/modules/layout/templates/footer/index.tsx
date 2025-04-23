@@ -13,7 +13,7 @@ export default async function Footer({countryCode}: {countryCode: string}) {
     fields: "*products",
   })
   const productCategories = await listCategories()
-  console.log(countryCode)
+  // console.log(countryCode)
 
   const t = await getTranslations("Footer")
 

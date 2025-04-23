@@ -27,7 +27,7 @@ export default async function Nav() {
               className="txt-compact-xlarge-plus hover:text-ui-fg-base uppercase"
               data-testid="nav-store-link"
             >
-              Medusa Store
+              The Wool
             </LocalizedClientLink>
           </div>
 
@@ -38,7 +38,7 @@ export default async function Nav() {
                 href="/account"
                 data-testid="nav-account-link"
               >
-                {t('Account')}
+                {t('account')}
               </LocalizedClientLink>
             </div>
             <Suspense
@@ -48,7 +48,7 @@ export default async function Nav() {
                   href="/cart"
                   data-testid="nav-cart-link"
                 >
-                  {t('Cart')}
+                  {t('cart')}
                 </LocalizedClientLink>
               }
             >

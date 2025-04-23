@@ -10,11 +10,12 @@
       "shop_by_category_sub": "Browse our collections and find what you're looking for"
     },
     "Navigation": {
-      "Menu": "Menu",
-      "Home": "Home",
-      "Store": "Store",
-      "Account": "Account",
-      "Cart": "Cart"
+      "menu": "Menu",
+      "home": "Home",
+      "store": "Store",
+      "account": "Account",
+      "cart": "Cart",
+      "about": "About"
     },
     "Footer": {
       "Categories": "Categories",
@@ -63,5 +64,10 @@
       "personal_data_use_description": "You can use most of our website without providing any personal information. However, if you want to send us a message or communicate with us online, order a product or service, you need to provide certain information. Your personal information may include your name, surname, address or location, phone number and email address, text of your message or any other information you send to us",
       "cookie_etc": "Cookies and other tracking technologies",
       "cookie_etc_description": "Our website uses cookies and similar technologies to ensure maximum convenience for you, providing personalized information, remembering your preferences in the area of marketing and our products, and helping to obtain accurate information. When using the site, you confirm your consent to the use of cookies in accordance with this cookie policy. If you do not agree to the use of this type of file, please accordingly set the parameters of your browser or do not use the site https:// For questions regarding this policy, please contact us at info@thewool.shop"
+    },
+    "About": {
+      "title": "About Us",
+      "description": "the wool – ukrainian brand of knitted accessories and clothing. We create products that warm the heart from head to toe. When creating our products, we carefully select the yarn and control each stitch so that the products are perfect. The history of the wool began with childhood memories when my mother knitted clothes for my dolls. In 2016, we decided to turn these skills into reality and founded a family workshop, and in 2023, we launched a brand. All this time, each of our products is created with warmth and care, passing family traditions from generation to generation. We strive not only to preserve the craft of handmade knitting, but also to popularize it among ukrainians. Each stitch is not just a thread, it is a part of soul and skill that makes our products unique.",
+      "with_love": "With love, Valentyna and Alina"
     }
   }

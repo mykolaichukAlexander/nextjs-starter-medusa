@@ -3,8 +3,8 @@ import { Heading, Text } from "@medusajs/ui"
 import { getTranslations } from "next-intl/server"
 
 export const metadata: Metadata = {
-  title: "Delivery Information",
-  description: "Information about our delivery process, shipping times and costs",
+  title: "Privacy Policy",
+  description: "Privacy Policy",
 }
 
 export default async function PrivacyInfo() {
@@ -51,7 +51,6 @@ export default async function PrivacyInfo() {
             {t_privacy("cookie_etc_description")}
           </Text>
         </div>
-
       </div>
     </div>
   )
