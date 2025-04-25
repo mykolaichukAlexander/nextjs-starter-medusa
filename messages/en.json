@@ -69,5 +69,21 @@
       "title": "About Us",
       "description": "the wool – ukrainian brand of knitted accessories and clothing. We create products that warm the heart from head to toe. When creating our products, we carefully select the yarn and control each stitch so that the products are perfect. The history of the wool began with childhood memories when my mother knitted clothes for my dolls. In 2016, we decided to turn these skills into reality and founded a family workshop, and in 2023, we launched a brand. All this time, each of our products is created with warmth and care, passing family traditions from generation to generation. We strive not only to preserve the craft of handmade knitting, but also to popularize it among ukrainians. Each stitch is not just a thread, it is a part of soul and skill that makes our products unique.",
       "with_love": "With love, Valentyna and Alina"
+    },
+    "Checkout": {
+      "title": "Checkout",
+      "personal_data": "Personal Data",
+      "shipping_address": "Shipping Address",
+      "billing_address": "Billing Address",
+      "shipping_address_description": "Please enter your shipping address",
+      "billing_address_description": "Please enter your billing address",
+      "edit": "Edit",
+      "continue_to_delivery": "Continue to delivery"
+    }, 
+    "CustomerData": {
+      "first_name": "First Name",
+      "last_name": "Last Name",
+      "email": "Email",
+      "phone": "Phone"
     }
   }
