@@ -109,4 +109,91 @@
   .text-3xl-semi {
     @apply text-[32px] leading-[44px] font-semibold;
   }
+
+  /* Nova Poshta Component Styles */
+  .nova-poshta-button {
+    @apply flex flex-col p-[11px_40px_11px_16px] border border-[#e2e8f0] rounded-xl font-sans bg-white cursor-pointer max-w-[344px] relative box-border mb-5;
+  }
+
+  .nova-poshta-button-horizontal {
+    @apply flex-row items-center gap-2.5;
+  }
+
+  .nova-poshta-button img {
+    @apply w-6 h-6 mr-2.5;
+  }
+
+  .nova-poshta-text {
+    @apply flex;
+  }
+
+  .nova-poshta-angle {
+    @apply absolute top-1/2 -translate-y-1/2 right-5 h-4;
+  }
+
+  .nova-poshta-logo {
+    @apply flex items-center mb-2.5;
+  }
+
+  .nova-poshta-logo-no-margin {
+    @apply m-0;
+  }
+
+  .nova-poshta-modal-overlay {
+    @apply fixed top-0 left-0 w-full h-full bg-black/60 flex justify-center items-center z-[1000];
+  }
+
+  .nova-poshta-modal-header {
+    @apply relative h-20 px-5 border-b border-[#e2e8f0] leading-[80px];
+  }
+
+  .nova-poshta-modal {
+    @apply relative w-4/5 h-4/5 bg-white overflow-hidden shadow-md;
+  }
+
+  .nova-poshta-modal-header h2 {
+    @apply m-0 font-sans text-xl leading-[80px] font-semibold;
+  }
+
+  .nova-poshta-modal-close {
+    @apply cursor-pointer text-3xl text-[#333] absolute right-0 top-0 w-10 h-full flex items-center justify-center;
+  }
+
+  .nova-poshta-modal-iframe {
+    @apply w-full h-[calc(100%-81px)] border-0;
+  }
+
+  .nova-poshta-wrapper {
+    @apply flex flex-col font-sans font-medium;
+  }
+
+  .nova-poshta-wrapper .text {
+    @apply text-base leading-[21px];
+  }
+
+  .nova-poshta-wrapper .text-description {
+    @apply text-sm font-normal leading-[18px] text-[#475569];
+  }
+
+  .nova-poshta-text-row {
+    @apply flex flex-row;
+  }
+
+  .nova-poshta-text-bottom {
+    @apply mb-1;
+  }
+
+  @media screen and (max-width: 767px) {
+    .nova-poshta-modal {
+      @apply w-screen h-screen;
+    }
+
+    .nova-poshta-modal-header {
+      @apply hidden;
+    }
+
+    .nova-poshta-modal-iframe {
+      @apply h-full;
+    }
+  }
 }

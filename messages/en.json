@@ -85,5 +85,13 @@
       "last_name": "Last Name",
       "email": "Email",
       "phone": "Phone"
+    },
+    "Shipping": {
+      "title": "Shipping",
+      "edit": "Edit",
+      "shipping_method": "Shipping Method",
+      "shipping_method_description": "Please select the shipping method",
+      "continue_to_payment": "Continue to payment",
+      "nova_poshta_missing_data": "Please select address first"
     }
   }

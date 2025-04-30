@@ -12,16 +12,19 @@ import Divider from "@modules/common/components/divider"
 import MedusaRadio from "@modules/common/components/radio"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { useEffect, useState } from "react"
+import { useTranslations } from "use-intl"
+import NovaPoshtaButton from "../nova-poshta"
 
 const PICKUP_OPTION_ON = "__PICKUP_ON"
 const PICKUP_OPTION_OFF = "__PICKUP_OFF"
+const NOVA_POSHTA_PROVIDER_ID = "nova-poshta-fulfillment_nova-poshta-fulfillment"
 
 type ShippingProps = {
   cart: HttpTypes.StoreCart
   availableShippingMethods: HttpTypes.StoreCartShippingOption[] | null
 }
 
-function formatAddress(address) {
+function formatAddress(address: HttpTypes.StoreCartAddress) {
   if (!address) {
     return ""
   }
@@ -51,14 +54,22 @@ const Shipping: React.FC<ShippingProps> = ({
   cart,
   availableShippingMethods,
 }) => {
+
+  // console.log(JSON.stringify(availableShippingMethods))
+  const t = useTranslations("Shipping")
+
   const [isLoading, setIsLoading] = useState(false)
   const [isLoadingPrices, setIsLoadingPrices] = useState(true)
+
+  const [novaPoshtaData, setNovaPoshtaData] = useState<any>(null)
 
   const [showPickupOptions, setShowPickupOptions] =
     useState<string>(PICKUP_OPTION_OFF)
   const [calculatedPricesMap, setCalculatedPricesMap] = useState<
     Record<string, number>
   >({})
+
+  const [shippingMethodSubmitted, setShippingMethodSubmitted] = useState<boolean>(false)
   const [error, setError] = useState<string | null>(null)
   const [shippingMethodId, setShippingMethodId] = useState<string | null>(
     cart.shipping_methods?.at(-1)?.shipping_option_id || null
@@ -79,6 +90,8 @@ const Shipping: React.FC<ShippingProps> = ({
   )
 
   const hasPickupOptions = !!_pickupMethods?.length
+
+  const [pendingNovaPoshtaOptionId, setPendingNovaPoshtaOptionId] = useState<string | null>(null)
 
   useEffect(() => {
     setIsLoadingPrices(true)
@@ -106,6 +119,13 @@ const Shipping: React.FC<ShippingProps> = ({
     }
   }, [availableShippingMethods])
 
+  useEffect(() => {
+    if (pendingNovaPoshtaOptionId && novaPoshtaData) {
+      handleSetShippingMethod(pendingNovaPoshtaOptionId, "shipping")
+      setPendingNovaPoshtaOptionId(null)
+    }
+  }, [novaPoshtaData])
+
   const handleEdit = () => {
     router.push(pathname + "?step=delivery", { scroll: false })
   }
@@ -120,6 +140,14 @@ const Shipping: React.FC<ShippingProps> = ({
   ) => {
     setError(null)
 
+    // Check if it's NovaPoshta and data is empty
+    const selectedOption = availableShippingMethods?.find(option => option.id === id)
+    console.log(JSON.stringify(novaPoshtaData))
+    if (selectedOption?.provider_id === NOVA_POSHTA_PROVIDER_ID && !novaPoshtaData) {
+      setError(t("nova_poshta_missing_data"))
+      return
+    }
+
     if (variant === "pickup") {
       setShowPickupOptions(PICKUP_OPTION_ON)
     } else {
@@ -133,15 +161,17 @@ const Shipping: React.FC<ShippingProps> = ({
       return id
     })
 
-    await setShippingMethod({ cartId: cart.id, shippingMethodId: id })
+    await setShippingMethod({ cartId: cart.id, shippingMethodId: id, data: novaPoshtaData })
       .catch((err) => {
         setShippingMethodId(currentId)
-
         setError(err.message)
       })
       .finally(() => {
+        setShippingMethodSubmitted(true)
         setIsLoading(false)
       })
+
+    
   }
 
   useEffect(() => {
@@ -161,7 +191,7 @@ const Shipping: React.FC<ShippingProps> = ({
             }
           )}
         >
-          Delivery
+          {t("title")}
           {!isOpen && (cart.shipping_methods?.length ?? 0) > 0 && (
             <CheckCircleSolid />
           )}
@@ -176,7 +206,7 @@ const Shipping: React.FC<ShippingProps> = ({
                 className="text-ui-fg-interactive hover:text-ui-fg-interactive-hover"
                 data-testid="edit-delivery-button"
               >
-                Edit
+                {t("edit")}
               </button>
             </Text>
           )}
@@ -186,10 +216,11 @@ const Shipping: React.FC<ShippingProps> = ({
           <div className="grid">
             <div className="flex flex-col">
               <span className="font-medium txt-medium text-ui-fg-base">
-                Shipping method
+                {t("shipping_method")}
               </span>
               <span className="mb-4 text-ui-fg-muted txt-medium">
-                How would you like you order delivered
+                {t("shipping_method_description")}
+                <Text>{JSON.stringify(novaPoshtaData)}</Text>
               </span>
             </div>
             <div data-testid="delivery-options-container">
@@ -242,6 +273,8 @@ const Shipping: React.FC<ShippingProps> = ({
                       !isLoadingPrices &&
                       typeof calculatedPricesMap[option.id] !== "number"
 
+                    const isNovaPoshta = option.provider_id === NOVA_POSHTA_PROVIDER_ID
+
                     return (
                       <Radio
                         key={option.id}
@@ -262,9 +295,18 @@ const Shipping: React.FC<ShippingProps> = ({
                           <MedusaRadio
                             checked={option.id === shippingMethodId}
                           />
-                          <span className="text-base-regular">
-                            {option.name}
-                          </span>
+                          
+                          <div className="flex flex-col">
+                            <span className="text-base-regular">
+                              {option.name}
+                            </span>
+                            {isNovaPoshta && (
+                              <NovaPoshtaButton onSelect={(data) => {
+                                setNovaPoshtaData(data);
+                                setPendingNovaPoshtaOptionId(option.id);
+                              }} initialDepartment={novaPoshtaData} />
+                            )}
+                          </div>
                         </div>
                         <span className="justify-self-end text-ui-fg-base">
                           {option.price_type === "flat" ? (
@@ -365,10 +407,10 @@ const Shipping: React.FC<ShippingProps> = ({
               className="mt"
               onClick={handleSubmit}
               isLoading={isLoading}
-              disabled={!cart.shipping_methods?.[0]}
+              disabled={!shippingMethodSubmitted}
               data-testid="submit-delivery-option-button"
             >
-              Continue to payment
+              {t("continue_to_payment")}
             </Button>
           </div>
         </>

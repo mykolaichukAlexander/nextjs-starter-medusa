@@ -84,5 +84,13 @@
       "last_name": "Прізвище",
       "email": "Email",
       "phone": "Телефон"
+    },
+    "Shipping": {
+      "title": "Доставка",
+      "edit": "Редагувати",
+      "shipping_method": "Метод доставки",
+      "shipping_method_description": "Будь ласка, виберіть метод доставки",
+      "continue_to_payment": "Далі до оплати",
+      "nova_poshta_missing_data": "Будь ласка, виберіть адресу"
     }
   }
